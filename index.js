@@ -48,8 +48,8 @@ client.on('ready', async () => {
 });
 
 
-const adminprefix = "!";
-const devs = ['300572903068663818','431150885549113344'];
+const adminprefix = "3";
+const devs = ['469137223346814986','431150885549113344'];
 bot.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -191,7 +191,7 @@ if (queue.length === 0) { // if there are no songs in the queue, send message th
 } else if (args.length > 0 && args[0] == 'remove') { // if arguments are provided and first one is remove
 	if (args.length == 2 && args[1] <= queue.length) { // check if there are no more than 2 arguments and that second one is in range of songs number in queue
 		// then remove selected song from the queue
-		message.reply(`**${songsQueue[args[1] - 1]}** has been removed from the queue. Type !queue to see the current queue.`);
+		message.reply(`**${songsQueue[args[1] - 1]}** has been removed from the queue. Type 3queue to see the current queue.`);
 		queue.splice(args[1] - 1, 1);
 		songsQueue.splice(args[1] - 1, 1);
 	} else { // if there are more than 2 arguments and the second one is not in the range of songs number in queue, send message
@@ -204,13 +204,13 @@ if (queue.length === 0) { // if there are no songs in the queue, send message th
 		queue.splice(1);
 		songsQueue.splice(1);
 	} else {
-		message.reply("**You need to type !queue clear without following arguments.**");
+		message.reply("**You need to type 3queue clear without following arguments.**");
 	}
 } else if (args.length > 0 && args[0] == 'shuffle') {
 	let tempA = [songsQueue[0]];
 	let tempB = songsQueue.slice(1);
 	songsQueue = tempA.concat(shuffle(tempB));
-	message.channel.send("Queue has been shuffled. Type !queue to see the new queue!");
+	message.channel.send("Queue has been shuffled. Type 3queue to see the new queue!");
 } else { // if there are songs in the queue and queue commands is without arguments display current queue
 	let format = "```"
 	for (const songName in songsQueue) {
@@ -259,7 +259,7 @@ if (args.length == 0) {
 .addField("4:", "```" + ytResults[3] + "```")
 .addField("5:", "```" + ytResults[4] + "```")
 .addBlankField()
-.setFooter("Send !add [result number] to queue the song.");
+.setFooter("Send 3add [result number] to queue the song.");
 		message.channel.send(ytEmbed);
 		youtubeSearched = true;
 	}).catch(err => console.log(err));
